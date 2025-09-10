@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servizio H24 - I 3 Fratelli Panificio Milano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --terra: #A9714B;
+            --crema: #F5EBDD;
+            --grano: #D9B36F;
+            --nero-forno: #2D1C13;
+            --rosso-vivo: #9F3325;
+            --bianco: #FFFFFF;
+            --verde-successo: #4CAF50;
+            --blu-notte: #1a237e;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--nero-forno);
+            background: var(--nero-forno);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bianco);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--terra);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--nero-forno);
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--terra);
+        }
+        
+        .cta-header {
+            background: var(--rosso-vivo);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Hero H24 - Design Notturno */
+        .hero-h24 {
+            margin-top: 80px;
+            background: linear-gradient(180deg, #0a0e27 0%, #1a237e 100%);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-h24::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(217,179,111,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveStars 100s linear infinite;
+        }
+        
+        @keyframes moveStars {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -50px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .hero-h24 h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .hero-h24 .subtitle {
+            font-size: 1.5rem;
+            color: var(--grano);
+            margin-bottom: 2rem;
+        }
+        
+        .emergency-button {
+            background: var(--rosso-vivo);
+            color: white;
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(159,51,37,0.5);
+            animation: emergencyPulse 1.5s infinite;
+        }
+        
+        @keyframes emergencyPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(159,51,37,0.5);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(159,51,37,0.7);
+            }
+        }
+        
+        .emergency-button:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Timeline Interattiva */
+        .timeline-section {
+            background: var(--nero-forno);
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--grano);
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--grano);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 2rem;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(217,179,111,0.3);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 3rem;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 3rem;
+        }
+        
+        .timeline-time {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--terra);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(169,113,75,0.5);
+        }
+        
+        .timeline-title {
+            font-size: 1.5rem;
+            color: var(--grano);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-desc {
+            color: white;
+            opacity: 0.9;
+        }
+        
+        .timeline-status {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.3rem 1rem;
+            background: var(--verde-successo);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        /* Storie di Salvataggio */
+        .storie-section {
+            background: var(--crema);
+            padding: 4rem 0;
+        }
+        
+        .storie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .storia-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .storia-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .storia-header {
+            background: linear-gradient(135deg, var(--blu-notte), #3949ab);
+            color: white;
+            padding: 1.5rem;
+        }
+        
+        .storia-time {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .storia-type {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .storia-body {
+            padding: 1.5rem;
+        }
+        
+        .storia-problema {
+            color: var(--rosso-vivo);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .storia-soluzione {
+            color: var(--verde-successo);
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .storia-quote {
+            background: var(--crema);
+            padding: 1rem;
+            border-radius: 10px;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        /* Come Funziona */
+        .come-funziona {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step-card {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .step-card::after {
+            content: '→';
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--grano);
+        }
+        
+        .step-card:last-child::after {
+            display: none;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--terra);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            color: var(--nero-forno);
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-desc {
+            color: #666;
+        }
+        
+        .step-time {
+            color: var(--verde-successo);
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        /* Mappa Zone Consegna */
+        .mappa-section {
+            background: var(--nero-forno);
+            padding: 4rem 0;
+        }
+        
+        .mappa-container {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .mappa-placeholder {
+            height: 400px;
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .zone-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .zona-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        
+        .zona-name {
+            font-weight: bold;
+            color: var(--grano);
+            margin-bottom: 0.5rem;
+        }
+        
+        .zona-time {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Privati Section */
+        .privati-section {
+            background: var(--crema);
+            padding: 4rem 0;
+        }
+        
+        .privati-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .privati-text h3 {
+            font-size: 2rem;
+            color: var(--terra);
+            margin-bottom: 1rem;
+        }
+        
+        .privati-text p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .privati-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .privati-list li {
+            padding: 0.5rem 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .privati-list li::before {
+            content: "🌙";
+        }
+        
+        .privati-visual {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .orari-notturni {
+            text-align: center;
+        }
+        
+        .orari-notturni h4 {
+            color: var(--blu-notte);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .orario-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .orario-item:last-child {
+            border-bottom: none;
+        }
+        
+        .orario-quando {
+            font-weight: bold;
+            color: var(--terra);
+        }
+        
+        .orario-cosa {
+            color: #666;
+        }
+        
+        /* CTA Emergenza Fissa */
+        .emergency-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .emergency-fab {
+            width: 70px;
+            height: 70px;
+            background: var(--rosso-vivo);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(159,51,37,0.5);
+            text-decoration: none;
+            transition: all 0.3s;
+            animation: emergencyPulse 2s infinite;
+        }
+        
+        .emergency-fab:hover {
+            transform: scale(1.1);
+        }
+        
+        .emergency-tooltip {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background: var(--nero-forno);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .emergency-fab:hover + .emergency-tooltip {
+            opacity: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--nero-forno);
+            color: white;
+            padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(217,179,111,0.3);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--grano);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-h24 h1 {
+                font-size: 2rem;
+            }
+            
+            .timeline-line {
+                left: 20px;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+                padding-left: 50px;
+            }
+            
+            .timeline-time {
+                left: 20px;
+                width: 60px;
+                height: 60px;
+                font-size: 1rem;
+            }
+            
+            .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin: 0;
+                text-align: left;
+            }
+            
+            .privati-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-card::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">🍞 I 3 Fratelli</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ristoranti.html">Per Ristoranti</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="#" style="color: var(--terra);">Servizio H24</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+            <a href="tel:+39XXXXXXXXX" class="cta-header">📞 EMERGENZA H24</a>
+        </nav>
+    </header>
+
+    <!-- Hero H24 -->
+    <section class="hero-h24">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Mentre Milano Dorme, Noi Sforniamo</h1>
+                <p class="subtitle">L'unico panificio H24 • 360 giorni l'anno • 30 minuti ovunque</p>
+                <a href="tel:+39XXXXXXXXX" class="emergency-button">
+                    🚨 EMERGENZA PANE? CHIAMA ORA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mappa Zone Consegna -->
+    <section class="mappa-section">
+        <div class="container">
+            <h2 class="section-title">Zone di Consegna H24</h2>
+            <p class="section-subtitle">Copriamo tutta Milano con tempi garantiti</p>
+            
+            <div class="mappa-container">
+                <div class="mappa-placeholder">
+                    🗺️ Mappa Interattiva Milano
+                </div>
+                
+                <div class="zone-list">
+                    <div class="zona-item">
+                        <div class="zona-name">Centro Storico</div>
+                        <div class="zona-time">10-15 minuti</div>
+                    </div>
+                    <div class="zona-item">
+                        <div class="zona-name">Porta Nuova</div>
+                        <div class="zona-time">15-20 minuti</div>
+                    </div>
+                    <div class="zona-item">
+                        <div class="zona-name">Navigli</div>
+                        <div class="zona-time">15-20 minuti</div>
+                    </div>
+                    <div class="zona-item">
+                        <div class="zona-name">Brera</div>
+                        <div class="zona-time">10-15 minuti</div>
+                    </div>
+                    <div class="zona-item">
+                        <div class="zona-name">Isola</div>
+                        <div class="zona-time">15-20 minuti</div>
+                    </div>
+                    <div class="zona-item">
+                        <div class="zona-name">Porta Romana</div>
+                        <div class="zona-time">20-25 minuti</div>
+                    </div>
+                    <div class="zona-item">
+                        <div class="zona-name">Città Studi</div>
+                        <div class="zona-time">20-25 minuti</div>
+                    </div>
+                    <div class="zona-item">
+                        <div class="zona-name">San Siro</div>
+                        <div class="zona-time">25-30 minuti</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Privati -->
+    <section class="privati-section">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--nero-forno);">Anche per Te, Sempre</h2>
+            <p class="section-subtitle" style="color: #666;">Non solo B2B: il panificio dei nottambuli milanesi</p>
+            
+            <div class="privati-content">
+                <div class="privati-text">
+                    <h3>L'Unico Panificio Notturno di Milano</h3>
+                    <p>
+                        Lavori di notte? Rientri tardi? Hai voglia di pane fresco alle 3 del mattino?
+                        Noi ci siamo. Sempre.
+                    </p>
+                    <p>
+                        Da oltre 60 anni siamo il punto di riferimento per chi vive Milano
+                        quando gli altri dormono. Medici, infermieri, tassisti, musicisti,
+                        studenti nottambuli... tutti sanno dove trovare il pane caldo.
+                    </p>
+                    
+                    <ul class="privati-list">
+                        <li>Pane fresco sfornato ogni 3 ore</li>
+                        <li>Brioche calde tutta la notte</li>
+                        <li>Pizza e focaccia fino all'alba</li>
+                        <li>Caffè e cappuccino H24</li>
+                        <li>WiFi gratuito per chi aspetta</li>
+                    </ul>
+                </div>
+                
+                <div class="privati-visual">
+                    <div class="orari-notturni">
+                        <h4>🌙 Chi Viene di Notte</h4>
+                        
+                        <div class="orario-item">
+                            <span class="orario-quando">22:00 - 01:00</span>
+                            <span class="orario-cosa">Ristoratori per emergenze</span>
+                        </div>
+                        <div class="orario-item">
+                            <span class="orario-quando">01:00 - 03:00</span>
+                            <span class="orario-cosa">Tassisti in pausa</span>
+                        </div>
+                        <div class="orario-item">
+                            <span class="orario-quando">03:00 - 05:00</span>
+                            <span class="orario-cosa">Personale ospedaliero</span>
+                        </div>
+                        <div class="orario-item">
+                            <span class="orario-quando">05:00 - 07:00</span>
+                            <span class="orario-cosa">Pendolari mattinieri</span>
+                        </div>
+                        <div class="orario-item">
+                            <span class="orario-quando">SEMPRE</span>
+                            <span class="orario-cosa">Chi ha bisogno di noi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Contatti H24</h3>
+                    <ul>
+                        <li><a href="tel:+39XXXXXXXXX">📞 Telefono Emergenze</a></li>
+                        <li><a href="#">📱 WhatsApp H24</a></li>
+                        <li><a href="#">📧 ordininotturni@i3fratelli.it</a></li>
+                        <li><a href="#">🚨 Linea Diretta Chef</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Servizi Notturni</h3>
+                    <ul>
+                        <li><a href="#">Emergenze Ristoranti</a></li>
+                        <li><a href="#">Consegne Notturne</a></li>
+                        <li><a href="#">Ordini Last-Minute</a></li>
+                        <li><a href="#">Eventi H24</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Zone Servite</h3>
+                    <ul>
+                        <li><a href="#">Milano Centro</a></li>
+                        <li><a href="#">Hinterland (su richiesta)</a></li>
+                        <li><a href="#">Aeroporti (Linate/Malpensa)</a></li>
+                        <li><a href="#">Stazioni FS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Garanzie H24</h3>
+                    <ul>
+                        <li><a href="#">30 minuti o gratis</a></li>
+                        <li><a href="#">Sempre aperti (360 giorni)</a></li>
+                        <li><a href="#">Qualità garantita H24</a></li>
+                        <li><a href="#">Prezzi trasparenti</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 I 3 Fratelli - Il Forno che Non Dorme Mai™</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottone Emergenza Fisso -->
+    <div class="emergency-fixed">
+        <a href="tel:+39XXXXXXXXX" class="emergency-fab">📞</a>
+        <div class="emergency-tooltip">Emergenza Pane? Chiama!</div>
+    </div>
+</body>
+</html>>
+    </section>
+
+    <!-- Timeline Interattiva -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Il Nostro Orologio Non Si Ferma Mai</h2>
+            <p class="section-subtitle">24 ore di attività continua per garantirti sempre pane fresco</p>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Preparazione Notturna</h3>
+                        <p class="timeline-desc">
+                            Mentre la città dorme, iniziamo gli impasti per il giorno dopo.
+                            Lievito madre attivato, farine selezionate.
+                        </p>
+                        <span class="timeline-status">ATTIVO ORA</span>
+                    </div>
+                    <div class="timeline-time">02:00</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Prima Sfornata</h3>
+                        <p class="timeline-desc">
+                            Pane fresco per hotel e bar che aprono presto.
+                            Croissant, brioche, pane per colazioni.
+                        </p>
+                        <span class="timeline-status">CONSEGNE ATTIVE</span>
+                    </div>
+                    <div class="timeline-time">05:00</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Rush Mattutino</h3>
+                        <p class="timeline-desc">
+                            Rifornimento massiccio per ristoranti.
+                            Preparazione ordini lunch, panini per bar.
+                        </p>
+                        <span class="timeline-status">ALTA ATTIVITÀ</span>
+                    </div>
+                    <div class="timeline-time">08:00</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Consegne Pranzo</h3>
+                        <p class="timeline-desc">
+                            Seconda ondata di consegne per ristoranti.
+                            Rifornimenti last-minute accettati.
+                        </p>
+                        <span class="timeline-status">CONSEGNE EXPRESS</span>
+                    </div>
+                    <div class="timeline-time">11:00</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Preparazione Aperitivo</h3>
+                        <p class="timeline-desc">
+                            Focacce, grissini, prodotti per aperitivo.
+                            Consegne per eventi serali.
+                        </p>
+                        <span class="timeline-status">PRODUZIONE SPECIALI</span>
+                    </div>
+                    <div class="timeline-time">17:00</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Servizio Emergenze</h3>
+                        <p class="timeline-desc">
+                            Disponibili per emergenze cena.
+                            Ultimo giro ordini per domani.
+                        </p>
+                        <span class="timeline-status">EMERGENZE ATTIVE</span>
+                    </div>
+                    <div class="timeline-time">20:00</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Produzione Notturna</h3>
+                        <p class="timeline-desc">
+                            Ripartiamo con il ciclo. Impasti lunghi.
+                            Servizio per nottambuli e lavoratori notturni.
+                        </p>
+                        <span class="timeline-status">H24 GARANTITO</span>
+                    </div>
+                    <div class="timeline-time">23:00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Storie di Salvataggio -->
+    <section class="storie-section">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--nero-forno);">Storie Vere di Salvataggi Notturni</h2>
+            <p class="section-subtitle" style="color: #666;">Quando gli altri dormono, noi corriamo</p>
+            
+            <div class="storie-grid">
+                <div class="storia-card">
+                    <div class="storia-header">
+                        <div class="storia-time">03:45</div>
+                        <div class="storia-type">Matrimonio - Sabato Notte</div>
+                    </div>
+                    <div class="storia-body">
+                        <p class="storia-problema">💔 IL PROBLEMA</p>
+                        <p>200 invitati, catering in panico. Il furgone del pane ha avuto un incidente. Nessun panificio aperto.</p>
+                        
+                        <p class="storia-soluzione">✅ LA SOLUZIONE</p>
+                        <p>Chiamata alle 3:45. Sfornata speciale immediata. Consegna in location alle 4:30. Matrimonio salvato.</p>
+                        
+                        <div class="storia-quote">
+                            "Avete salvato il giorno più importante della nostra vita"
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="storia-card">
+                    <div class="storia-header">
+                        <div class="storia-time">22:30</div>
+                        <div class="storia-type">Ristorante Stellato - Emergenza</div>
+                    </div>
+                    <div class="storia-body">
+                        <p class="storia-problema">💔 IL PROBLEMA</p>
+                        <p>Sabato sera, tutto esaurito. Menu degustazione da 150€. Finito il pane speciale alle olive.</p>
+                        
+                        <p class="storia-soluzione">✅ LA SOLUZIONE</p>
+                        <p>WhatsApp alle 22:30. Pane alle olive sfornato fresco. Consegnato caldo in 25 minuti.</p>
+                        
+                        <div class="storia-quote">
+                            "Da allora, siete il nostro backup plan ufficiale"
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="storia-card">
+                    <div class="storia-header">
+                        <div class="storia-time">05:15</div>
+                        <div class="storia-type">Hotel 5 Stelle - Colazione VIP</div>
+                    </div>
+                    <div class="storia-body">
+                        <p class="storia-problema">💔 IL PROBLEMA</p>
+                        <p>Delegazione diplomatica arrivata in anticipo. 50 colazioni alle 6:00 invece che alle 8:00.</p>
+                        
+                        <p class="storia-soluzione">✅ LA SOLUZIONE</p>
+                        <p>Chiamata alle 5:15. Produzione accelerata. Consegna completa alle 5:45. Diplomatici soddisfatti.</p>
+                        
+                        <div class="storia-quote">
+                            "L'unico fornitore che non ci ha mai deluso in 10 anni"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Come Funziona -->
+    <section class="come-funziona">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--nero-forno);">Come Attivare il Servizio H24</h2>
+            <p class="section-subtitle" style="color: #666;">Dal problema alla soluzione in 4 semplici step</p>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Chiama o Scrivi</h3>
+                    <p class="step-desc">Telefono, WhatsApp, qualsiasi ora. Rispondiamo sempre.</p>
+                    <p class="step-time">Risposta < 1 minuto</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Conferma Ordine</h3>
+                    <p class="step-desc">Ti diciamo cosa abbiamo pronto e cosa possiamo preparare.</p>
+                    <p class="step-time">Conferma immediata</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Preparazione</h3>
+                    <p class="step-desc">Sforniamo o prepariamo al volo il tuo ordine.</p>
+                    <p class="step-time">5-15 minuti</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Consegna Express</h3>
+                    <p class="step-desc">Arriviamo ovunque a Milano in tempo record.</p>
+                    <p class="step-time">Max 30 minuti</p>
+                </div>
+            </div>
+        </div

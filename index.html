@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I 3 Fratelli - L'Unico Fornitore di Pane H24 a Milano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --terra: #A9714B;
+            --crema: #F5EBDD;
+            --grano: #D9B36F;
+            --nero-forno: #2D1C13;
+            --rosso-vivo: #9F3325;
+            --bianco: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--nero-forno);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bianco);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--terra);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--nero-forno);
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--terra);
+        }
+        
+        .cta-header {
+            background: var(--rosso-vivo);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .cta-header:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(rgba(45, 28, 19, 0.7), rgba(45, 28, 19, 0.7)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23A9714B" width="1200" height="600"/><path fill="%23F5EBDD" d="M0 300L50 325L100 300L150 275L200 300L250 325L300 300L350 275L400 300L450 325L500 300L550 275L600 300L650 325L700 300L750 275L800 300L850 325L900 300L950 275L1000 300L1050 325L1100 300L1150 275L1200 300V600H0V300Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--grano);
+        }
+        
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .badge {
+            text-align: center;
+        }
+        
+        .badge-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--grano);
+        }
+        
+        .badge-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .btn-primary {
+            background: var(--rosso-vivo);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background: #b53a2f;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--nero-forno);
+        }
+        
+        /* Valori Section */
+        .valori {
+            padding: 4rem 0;
+            background: var(--crema);
+        }
+        
+        .valori-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .valore-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .valore-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .valore-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .valore-title {
+            font-size: 1.5rem;
+            color: var(--terra);
+            margin-bottom: 1rem;
+        }
+        
+        .valore-desc {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Clienti Section */
+        .clienti {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--nero-forno);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        
+        .clienti-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .cliente-logo {
+            width: 150px;
+            height: 80px;
+            background: var(--crema);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--terra);
+            font-weight: bold;
+        }
+        
+        /* Testimonial */
+        .testimonial {
+            background: var(--terra);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            text-align: right;
+            color: var(--grano);
+        }
+        
+        /* Servizio H24 */
+        .servizio24 {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--nero-forno) 0%, #4a3426 100%);
+            color: white;
+        }
+        
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .timeline-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timeline-time {
+            font-size: 1.5rem;
+            color: var(--grano);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-desc {
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Finale */
+        .cta-finale {
+            padding: 4rem 0;
+            background: var(--crema);
+            text-align: center;
+        }
+        
+        .cta-finale h2 {
+            font-size: 2.5rem;
+            color: var(--nero-forno);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-finale p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--nero-forno);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--grano);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--grano);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+        
+        /* Live Badge */
+        .live-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--rosso-vivo);
+            color: white;
+            padding: 1rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-badges {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">🍞 I 3 Fratelli</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#ristoranti">Per Ristoranti</a></li>
+                <li><a href="#prodotti">Prodotti</a></li>
+                <li><a href="#servizio24">Servizio H24</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+            </ul>
+            <a href="#diventa-partner" class="cta-header">DIVENTA PARTNER</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>L'UNICO FORNITORE DI PANE H24 A MILANO</h1>
+            <p class="subtitle">Partner affidabile di ristoranti d'eccellenza dal 1960</p>
+            
+            <div class="hero-badges">
+                <div class="badge">
+                    <div class="badge-number">50+</div>
+                    <div class="badge-label">Ristoranti Serviti</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-number">24h</div>
+                    <div class="badge-label">Sempre Aperti</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-number">360</div>
+                    <div class="badge-label">Giorni l'Anno</div>
+                </div>
+            </div>
+            
+            <div class="hero-cta">
+                <a href="#diventa-partner" class="btn-primary">🚚 Richiedi Campioni Gratuiti</a>
+                <a href="#servizio" class="btn-secondary">📞 Servizio Emergenze H24</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valori Section -->
+    <section class="valori">
+        <div class="container">
+            <h2 class="section-title">Il Partner che Non Dorme Mai</h2>
+            <p class="section-subtitle">Tre valori che ci rendono unici nel panorama milanese</p>
+            
+            <div class="valori-grid">
+                <div class="valore-card">
+                    <div class="valore-icon">🚚</div>
+                    <h3 class="valore-title">CONSEGNE GARANTITE</h3>
+                    <p class="valore-desc">
+                        Mattina, sera, emergenze notturne. 
+                        Il tuo pane arriva sempre in tempo, anche quando gli altri dormono.
+                        Ordini last-minute accettati fino alle 22:00.
+                    </p>
+                </div>
+                
+                <div class="valore-card">
+                    <div class="valore-icon">🏆</div>
+                    <h3 class="valore-title">QUALITÀ COSTANTE</h3>
+                    <p class="valore-desc">
+                        Lievito madre dal 1960, ricette invariate, mani esperte.
+                        Lo stesso pane eccellente, ogni giorno, ogni notte.
+                        Certificazioni HACCP e tracciabilità completa.
+                    </p>
+                </div>
+                
+                <div class="valore-card">
+                    <div class="valore-icon">📞</div>
+                    <h3 class="valore-title">SEMPRE REPERIBILI</h3>
+                    <p class="valore-desc">
+                        WhatsApp Business dedicato, risposta in 5 minuti.
+                        Account manager personale per ogni ristorante.
+                        Risolviamo emergenze in 30 minuti, garantito.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clienti Section -->
+    <section class="clienti">
+        <div class="container">
+            <h2 class="section-title">Si Fidano di Noi</h2>
+            <p class="section-subtitle">Dai ristoranti stellati alle pizzerie di quartiere, tutti scelgono la nostra affidabilità</p>
+            
+            <div class="clienti-logos">
+                <div class="cliente-logo">Ristorante A</div>
+                <div class="cliente-logo">Hotel B</div>
+                <div class="cliente-logo">Pizzeria C</div>
+                <div class="cliente-logo">Trattoria D</div>
+                <div class="cliente-logo">Bar E</div>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    "In 15 anni di ristorazione, non ho mai trovato un fornitore così affidabile. 
+                    Sabato sera, finito il pane alle 22:30, in 20 minuti erano alla porta con una fornitura fresca. 
+                    Sono davvero uomini di granite."
+                </p>
+                <p class="testimonial-author">— Marco R., Chef Ristorante Stellato</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servizio H24 -->
+    <section class="servizio24">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Il Nostro Orologio Non Si Ferma Mai</h2>
+            <p class="section-subtitle" style="color: var(--grano);">Ecco come lavoriamo per voi, ora per ora</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">02:00</div>
+                    <div class="timeline-desc">Prima lievitazione<br>Prepariamo il vostro pane</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">05:00</div>
+                    <div class="timeline-desc">Consegna Hotel/Bar<br>Colazioni pronte</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">11:00</div>
+                    <div class="timeline-desc">Consegna Lunch<br>Ristoranti riforniti</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">17:00</div>
+                    <div class="timeline-desc">Aperitivo Ready<br>Grissini e focacce</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">20:00</div>
+                    <div class="timeline-desc">Emergenze Cena<br>Sempre disponibili</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">H24</div>
+                    <div class="timeline-desc">Servizio Emergenza<br>30 minuti, ovunque</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Finale -->
+    <section class="cta-finale">
+        <div class="container">
+            <h2>Pronto a Diventare Partner?</h2>
+            <p>Unisciti agli oltre 50 ristoranti che hanno scelto l'affidabilità H24</p>
+            <div class="hero-cta">
+                <a href="#form" class="btn-primary">🤝 Richiedi Incontro</a>
+                <a href="tel:+39XXXXXXXXX" class="btn-secondary">📞 Chiama Ora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Per Ristoranti</h3>
+                    <ul>
+                        <li><a href="#">Diventa Partner</a></li>
+                        <li><a href="#">Listino B2B</a></li>
+                        <li><a href="#">Condizioni di Vendita</a></li>
+                        <li><a href="#">Area Clienti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Prodotti</h3>
+                    <ul>
+                        <li><a href="#">Pani Tradizionali</a></li>
+                        <li><a href="#">Specialità</a></li>
+                        <li><a href="#">Prodotti per Hotel</a></li>
+                        <li><a href="#">Personalizzazioni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Servizi H24</h3>
+                    <ul>
+                        <li><a href="#">Consegne Programmate</a></li>
+                        <li><a href="#">Emergenze Notturne</a></li>
+                        <li><a href="#">WhatsApp Business</a></li>
+                        <li><a href="#">+39 XXX XXXXXXX</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Anche per Privati</h3>
+                    <ul>
+                        <li><a href="#">Aperti 24h</a></li>
+                        <li><a href="#">L'unico panificio notturno</a></li>
+                        <li><a href="#">Via [Indirizzo]</a></li>
+                        <li><a href="#">Milano</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 I 3 Fratelli - P.IVA XXXXXXXXXXX - Tutti i diritti riservati</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Live Badge -->
+    <div class="live-badge">
+        <span class="live-dot"></span>
+        <span>STIAMO SFORNANDO ORA</span>
+    </div>
+</body>
+</html>

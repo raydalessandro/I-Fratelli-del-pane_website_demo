@@ -6,7 +6,7 @@
     <title>I 3 Fratelli - L'Unico Fornitore di Pane H24 a Milano</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         :root {
             --terra: #A9714B;
             --crema: #F5EBDD;
@@ -15,275 +15,156 @@
             --rosso-vivo: #9F3325;
             --bianco: #FFFFFF;
         }
-        
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: var(--nero-forno);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
+
+        body { font-family: 'Georgia', serif; line-height: 1.6; color: var(--nero-forno); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
         /* Header */
         header {
             background: var(--bianco);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            position: fixed; width: 100%; top: 0; z-index: 1000;
         }
-        
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
             padding: 1rem 0;
         }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--terra);
-        }
-        
+        .logo { font-size: 1.8rem; font-weight: bold; color: var(--terra); }
+
+        /* Desktop nav */
         .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
+            display: flex; list-style: none; gap: 2rem; align-items: center;
         }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--nero-forno);
-            transition: color 0.3s;
-        }
-        
+        .nav-links a { text-decoration: none; color: var(--nero-forno); transition: color 0.3s; }
         .nav-links a:hover { color: var(--terra); }
-        
+
         .cta-header {
-            background: var(--rosso-vivo);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: transform 0.3s;
-            white-space: nowrap;
+            background: var(--rosso-vivo); color: white; padding: 0.5rem 1.5rem;
+            border-radius: 25px; text-decoration: none; transition: transform 0.3s; white-space: nowrap;
         }
         .cta-header:hover { transform: translateY(-2px); }
 
-        /* ▼ Dropdown menu */
+        /* Dropdown */
         .dropdown { position: relative; }
         .dropdown > a {
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
         }
         .caret { font-size: 0.85em; opacity: 0.8; }
         .dropdown-content{
-            position:absolute; top:calc(100% + 8px); left:0;
-            background:#fff; list-style:none; margin:0; padding:8px 0;
-            box-shadow:0 2px 10px rgba(0,0,0,0.12); min-width:200px; border-radius:8px;
-            display:none; z-index:1001;
+            position: absolute; top: calc(100% + 8px); left: 0;
+            background: #fff; list-style: none; margin: 0; padding: 8px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.12); min-width: 200px; border-radius: 8px;
+            display: none; z-index: 1001;
         }
         .dropdown-content li a{
-            display:block; padding:10px 16px; color: var(--nero-forno); text-decoration:none;
+            display: block; padding: 10px 16px; color: var(--nero-forno); text-decoration: none;
         }
-        .dropdown-content li a:hover{ background:#f3f3f3; color: var(--terra); }
+        .dropdown-content li a:hover{ background: #f3f3f3; color: var(--terra); }
         .dropdown:hover .dropdown-content,
-        .dropdown:focus-within .dropdown-content{ display:block; }
-        /* ▲ Fine dropdown */
-        
+        .dropdown:focus-within .dropdown-content{ display: block; }
+
+        /* Burger (mobile) */
+        .burger {
+            display: none; width: 40px; height: 40px; border: 1px solid #ddd; border-radius: 10px;
+            background: #fff; align-items: center; justify-content: center; cursor: pointer;
+        }
+        .burger span {
+            display: block; width: 20px; height: 2px; background: #333; position: relative;
+        }
+        .burger span::before, .burger span::after {
+            content: ""; position: absolute; left: 0; width: 20px; height: 2px; background: #333;
+        }
+        .burger span::before { top: -6px; }
+        .burger span::after  { top: 6px; }
+
         /* Hero Section */
         .hero {
             margin-top: 80px;
             background: linear-gradient(rgba(45, 28, 19, 0.7), rgba(45, 28, 19, 0.7)),
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23A9714B" width="1200" height="600"/><path fill="%23F5EBDD" d="M0 300L50 325L100 300L150 275L200 300L250 325L300 300L350 275L400 300L450 325L500 300L550 275L600 300L650 325L700 300L750 275L800 300L850 325L900 300L950 275L1000 300L1050 325L1100 300L1150 275L1200 300V600H0V300Z"/></svg>');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 6rem 0;
-            text-align: center;
+            background-size: cover; background-position: center; color: white; padding: 6rem 0; text-align: center;
         }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--grano);
-        }
-        
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 3rem 0;
-        }
-        
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero .subtitle { font-size: 1.5rem; margin-bottom: 2rem; color: var(--grano); }
+
+        .hero-badges { display: flex; justify-content: center; gap: 3rem; margin: 3rem 0; }
         .badge { text-align: center; }
         .badge-number { font-size: 2.5rem; font-weight: bold; color: var(--grano); }
         .badge-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .hero-cta {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        
+
+        .hero-cta { display: flex; gap: 2rem; justify-content: center; margin-top: 2rem; }
         .btn-primary {
-            background: var(--rosso-vivo);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            display: inline-block;
+            background: var(--rosso-vivo); color: white; padding: 1rem 2rem;
+            border-radius: 30px; text-decoration: none; font-size: 1.1rem;
+            transition: all 0.3s; display: inline-block;
         }
         .btn-primary:hover { background: #b53a2f; transform: translateY(-3px); }
-        
         .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 1rem 2rem;
-            border: 2px solid white;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            display: inline-block;
+            background: transparent; color: white; padding: 1rem 2rem; border: 2px solid white;
+            border-radius: 30px; text-decoration: none; font-size: 1.1rem; transition: all 0.3s; display: inline-block;
         }
         .btn-secondary:hover { background: white; color: var(--nero-forno); }
-        
+
         /* Valori Section */
         .valori { padding: 4rem 0; background: var(--crema); }
-        
         .valori-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem; margin-top: 2rem;
         }
-        
         .valore-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            background: white; padding: 2rem; border-radius: 10px; text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s;
         }
         .valore-card:hover { transform: translateY(-5px); }
         .valore-icon { font-size: 3rem; margin-bottom: 1rem; }
         .valore-title { font-size: 1.5rem; color: var(--terra); margin-bottom: 1rem; }
         .valore-desc { color: #666; line-height: 1.8; }
-        
+
         /* Clienti Section */
         .clienti { padding: 4rem 0; background: white; }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--nero-forno);
-            margin-bottom: 1rem;
-        }
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 3rem;
-        }
-        
+        .section-title { text-align: center; font-size: 2.5rem; color: var(--nero-forno); margin-bottom: 1rem; }
+        .section-subtitle { text-align: center; color: #666; margin-bottom: 3rem; }
         .clienti-logos {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 2rem;
+            display: flex; justify-content: space-around; align-items: center;
+            flex-wrap: wrap; gap: 2rem; margin-top: 2rem;
         }
         .cliente-logo {
-            width: 150px;
-            height: 80px;
-            background: var(--crema);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--terra);
-            font-weight: bold;
+            width: 150px; height: 80px; background: var(--crema); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; color: var(--terra); font-weight: bold;
         }
-        
+
         /* Testimonial */
         .testimonial {
-            background: var(--terra);
-            color: white;
-            padding: 3rem;
-            border-radius: 15px;
-            margin-top: 3rem;
-            position: relative;
+            background: var(--terra); color: white; padding: 3rem; border-radius: 15px; margin-top: 3rem; position: relative;
         }
-        .testimonial::before {
-            content: '"';
-            font-size: 4rem;
-            position: absolute;
-            top: -20px;
-            left: 30px;
-            opacity: 0.3;
-        }
+        .testimonial::before { content: '"'; font-size: 4rem; position: absolute; top: -20px; left: 30px; opacity: 0.3; }
         .testimonial-text { font-size: 1.3rem; font-style: italic; margin-bottom: 1rem; }
         .testimonial-author { text-align: right; color: var(--grano); }
-        
+
         /* Servizio H24 */
-        .servizio24 {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, var(--nero-forno) 0%, #4a3426 100%);
-            color: white;
-        }
+        .servizio24 { padding: 4rem 0; background: linear-gradient(135deg, var(--nero-forno) 0%, #4a3426 100%); color: white; }
         .timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem; margin-top: 3rem;
         }
         .timeline-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
+            text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.1);
+            border-radius: 10px; backdrop-filter: blur(10px);
         }
-        .timeline-time {
-            font-size: 1.5rem;
-            color: var(--grano);
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
+        .timeline-time { font-size: 1.5rem; color: var(--grano); font-weight: bold; margin-bottom: 0.5rem; }
         .timeline-desc { font-size: 0.9rem; }
-        
+
         /* CTA Finale */
         .cta-finale { padding: 4rem 0; background: var(--crema); text-align: center; }
         .cta-finale h2 { font-size: 2.5rem; color: var(--nero-forno); margin-bottom: 1rem; }
         .cta-finale p { font-size: 1.2rem; color: #666; margin-bottom: 2rem; }
-        
+
         /* Footer */
         footer { background: var(--nero-forno); color: white; padding: 3rem 0 1rem; }
         .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem; margin-bottom: 2rem;
         }
         .footer-section h3 { color: var(--grano); margin-bottom: 1rem; }
         .footer-section ul { list-style: none; }
@@ -291,40 +172,46 @@
         .footer-section a { color: white; text-decoration: none; transition: color 0.3s; }
         .footer-section a:hover { color: var(--grano); }
         .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #999;
+            text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #999;
         }
-        
+
         /* Live Badge */
         .live-badge {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--rosso-vivo);
-            color: white;
-            padding: 1rem;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            z-index: 1000;
-            animation: pulse 2s infinite;
+            position: fixed; bottom: 20px; right: 20px; background: var(--rosso-vivo); color: white;
+            padding: 1rem; border-radius: 50px; display: flex; align-items: center; gap: 0.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 1000; animation: pulse 2s infinite;
         }
         @keyframes pulse { 0% { transform: scale(1);} 50% { transform: scale(1.05);} 100% { transform: scale(1);} }
-        .live-dot {
-            width: 10px; height: 10px; background: white; border-radius: 50%;
-            animation: blink 1s infinite;
-        }
+        .live-dot { width: 10px; height: 10px; background: white; border-radius: 50%; animation: blink 1s infinite; }
         @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-        
+
         /* Responsive */
+        @media (max-width: 992px) {
+            .burger { display: flex; }
+            /* nav mobile overlay */
+            .nav-links {
+                position: absolute; right: 20px; top: 70px;
+                background: #fff; border: 1px solid #eee; border-radius: 12px;
+                padding: 10px 0; width: min(260px, calc(100% - 40px));
+                box-shadow: 0 16px 30px rgba(0,0,0,0.12);
+                display: none; flex-direction: column; gap: 0;
+            }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; padding: 12px 16px; }
+            .nav-open .nav-links { display: flex; }
+
+            /* dropdown dentro il pannello mobile: diventa a flusso */
+            .dropdown-content {
+                position: static; box-shadow: none; border-radius: 0; min-width: 0;
+                display: none; padding: 0;
+            }
+            .dropdown.open .dropdown-content { display: block; }
+            .dropdown > a { padding: 12px 16px; width: 100%; justify-content: space-between; }
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .hero-badges { flex-direction: column; gap: 1rem; }
-            .nav-links { display: none; } /* nasconde i link su mobile (resta il CTA) */
             .hero-cta { flex-direction: column; align-items: center; }
         }
     </style>
@@ -332,30 +219,39 @@
 <body>
     <!-- Header -->
     <header>
-        <nav class="container">
+        <nav class="container" aria-label="Navigazione principale">
             <div class="logo">🍞 I 3 Fratelli</div>
-            <ul class="nav-links">
+
+            <!-- Burger (mobile) -->
+            <button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links" role="menubar">
                 <li><a href="./index.html">Home</a></li>
-                <li class="dropdown">
-                    <a tabindex="0">Pagine <span class="caret">▼</span></a>
-                    <ul class="dropdown-content">
-                        <li><a href="./ristoranti.html">Per Ristoranti</a></li>
-                        <li><a href="./prodotti.html">Prodotti</a></li>
-                        <li><a href="./servizio-h24.html">Servizio H24</a></li>
-                        <li><a href="./contatti.html">Contatti</a></li>
+
+                <!-- Dropdown -->
+                <li class="dropdown" id="dropdown">
+                    <a tabindex="0" aria-haspopup="true" aria-expanded="false">Pagine <span class="caret">▼</span></a>
+                    <ul class="dropdown-content" role="menu">
+                        <li><a href="./ristoranti.html" role="menuitem">Per Ristoranti</a></li>
+                        <li><a href="./prodotti.html" role="menuitem">Prodotti</a></li>
+                        <li><a href="./servizio-h24.html" role="menuitem">Servizio H24</a></li>
+                        <li><a href="./contatti.html" role="menuitem">Contatti</a></li>
                     </ul>
                 </li>
             </ul>
+
             <a href="#diventa-partner" class="cta-header">DIVENTA PARTNER</a>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
             <h1>L'UNICO FORNITORE DI PANE H24 A MILANO</h1>
             <p class="subtitle">Partner affidabile di ristoranti d'eccellenza dal 1960</p>
-            
+
             <div class="hero-badges">
                 <div class="badge">
                     <div class="badge-number">50+</div>
@@ -370,7 +266,7 @@
                     <div class="badge-label">Giorni l'Anno</div>
                 </div>
             </div>
-            
+
             <div class="hero-cta">
                 <a href="#diventa-partner" class="btn-primary">🚚 Richiedi Campioni Gratuiti</a>
                 <a href="#servizio" class="btn-secondary">📞 Servizio Emergenze H24</a>
@@ -383,18 +279,18 @@
         <div class="container">
             <h2 class="section-title">Il Partner che Non Dorme Mai</h2>
             <p class="section-subtitle">Tre valori che ci rendono unici nel panorama milanese</p>
-            
+
             <div class="valori-grid">
                 <div class="valore-card">
                     <div class="valore-icon">🚚</div>
                     <h3 class="valore-title">CONSEGNE GARANTITE</h3>
                     <p class="valore-desc">
-                        Mattina, sera, emergenze notturne. 
+                        Mattina, sera, emergenze notturne.
                         Il tuo pane arriva sempre in tempo, anche quando gli altri dormono.
                         Ordini last-minute accettati fino alle 22:00.
                     </p>
                 </div>
-                
+
                 <div class="valore-card">
                     <div class="valore-icon">🏆</div>
                     <h3 class="valore-title">QUALITÀ COSTANTE</h3>
@@ -404,7 +300,7 @@
                         Certificazioni HACCP e tracciabilità completa.
                     </p>
                 </div>
-                
+
                 <div class="valore-card">
                     <div class="valore-icon">📞</div>
                     <h3 class="valore-title">SEMPRE REPERIBILI</h3>
@@ -423,7 +319,7 @@
         <div class="container">
             <h2 class="section-title">Si Fidano di Noi</h2>
             <p class="section-subtitle">Dai ristoranti stellati alle pizzerie di quartiere, tutti scelgono la nostra affidabilità</p>
-            
+
             <div class="clienti-logos">
                 <div class="cliente-logo">Ristorante A</div>
                 <div class="cliente-logo">Hotel B</div>
@@ -431,11 +327,11 @@
                 <div class="cliente-logo">Trattoria D</div>
                 <div class="cliente-logo">Bar E</div>
             </div>
-            
+
             <div class="testimonial">
                 <p class="testimonial-text">
-                    "In 15 anni di ristorazione, non ho mai trovato un fornitore così affidabile. 
-                    Sabato sera, finito il pane alle 22:30, in 20 minuti erano alla porta con una fornitura fresca. 
+                    "In 15 anni di ristorazione, non ho mai trovato un fornitore così affidabile.
+                    Sabato sera, finito il pane alle 22:30, in 20 minuti erano alla porta con una fornitura fresca.
                     Sono davvero uomini di granite."
                 </p>
                 <p class="testimonial-author">— Marco R., Chef Ristorante Stellato</p>
@@ -444,11 +340,11 @@
     </section>
 
     <!-- Servizio H24 -->
-    <section class="servizio24">
+    <section class="servizio24" id="servizio">
         <div class="container">
             <h2 class="section-title" style="color: white;">Il Nostro Orologio Non Si Ferma Mai</h2>
             <p class="section-subtitle" style="color: var(--grano);">Ecco come lavoriamo per voi, ora per ora</p>
-            
+
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-time">02:00</div>
@@ -479,7 +375,7 @@
     </section>
 
     <!-- CTA Finale -->
-    <section class="cta-finale">
+    <section class="cta-finale" id="diventa-partner">
         <div class="container">
             <h2>Pronto a Diventare Partner?</h2>
             <p>Unisciti agli oltre 50 ristoranti che hanno scelto l'affidabilità H24</p>
@@ -542,5 +438,45 @@
         <span class="live-dot"></span>
         <span>STIAMO SFORNANDO ORA</span>
     </div>
+
+    <!-- Minimal JS per mobile toggle -->
+    <script>
+      (function () {
+        const body = document.body;
+        const burger = document.getElementById('burger');
+        const navLinks = document.getElementById('nav-links');
+        const dropdown = document.getElementById('dropdown');
+        const dropdownToggle = dropdown.querySelector('a');
+
+        // Toggle pannello mobile
+        burger.addEventListener('click', () => {
+          const open = body.classList.toggle('nav-open');
+          burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        // Dropdown in mobile: click per aprire/chiudere
+        dropdownToggle.addEventListener('click', (e) => {
+          // In desktop l'hover fa già il lavoro; in mobile abilitiamo il click
+          if (window.matchMedia('(max-width: 992px)').matches) {
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+            dropdownToggle.setAttribute(
+              'aria-expanded',
+              dropdown.classList.contains('open') ? 'true' : 'false'
+            );
+          }
+        });
+
+        // Chiude menu quando clicchi un link (mobile UX)
+        navLinks.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => {
+            if (body.classList.contains('nav-open')) {
+              body.classList.remove('nav-open');
+              burger.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      })();
+    </script>
 </body>
-                    </html>
+        </html>

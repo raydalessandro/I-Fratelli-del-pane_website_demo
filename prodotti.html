@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Nostri Prodotti - I 3 Fratelli Panificio Milano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --terra: #A9714B;
+            --crema: #F5EBDD;
+            --grano: #D9B36F;
+            --nero-forno: #2D1C13;
+            --rosso-vivo: #9F3325;
+            --bianco: #FFFFFF;
+            --verde-successo: #4CAF50;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--nero-forno);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bianco);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--terra);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--nero-forno);
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--terra);
+        }
+        
+        .cta-header {
+            background: var(--rosso-vivo);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+        }
+        
+        /* Hero Prodotti */
+        .hero-prodotti {
+            margin-top: 80px;
+            background: linear-gradient(rgba(169, 113, 75, 0.9), rgba(169, 113, 75, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23F5EBDD" width="1200" height="400"/><circle cx="100" cy="100" r="50" fill="%23D9B36F" opacity="0.3"/><circle cx="300" cy="200" r="70" fill="%23A9714B" opacity="0.2"/><circle cx="500" cy="150" r="40" fill="%23D9B36F" opacity="0.3"/><circle cx="700" cy="250" r="60" fill="%23A9714B" opacity="0.2"/><circle cx="900" cy="100" r="45" fill="%23D9B36F" opacity="0.3"/><circle cx="1100" cy="200" r="55" fill="%23A9714B" opacity="0.2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero-prodotti h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-prodotti p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
+        /* Filtri Categorie */
+        .filtri-section {
+            background: var(--crema);
+            padding: 2rem 0;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+        
+        .filtri-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .filtro-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border: 2px solid var(--terra);
+            border-radius: 25px;
+            color: var(--terra);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        
+        .filtro-btn:hover,
+        .filtro-btn.active {
+            background: var(--terra);
+            color: white;
+        }
+        
+        /* Sezione Prodotti */
+        .prodotti-section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--nero-forno);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        
+        /* Categorie Prodotti */
+        .categoria {
+            margin-bottom: 4rem;
+        }
+        
+        .categoria-header {
+            background: linear-gradient(to right, var(--terra), transparent);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+        
+        .categoria-title {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .categoria-desc {
+            color: var(--crema);
+            font-size: 1.1rem;
+        }
+        
+        .prodotti-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .prodotto-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .prodotto-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .prodotto-img {
+            width: 100%;
+            height: 200px;
+            background: var(--grano);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .prodotto-body {
+            padding: 1.5rem;
+        }
+        
+        .prodotto-name {
+            font-size: 1.5rem;
+            color: var(--nero-forno);
+            margin-bottom: 0.5rem;
+        }
+        
+        .prodotto-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .prodotto-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .prodotto-tag {
+            background: var(--crema);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--terra);
+            font-weight: bold;
+        }
+        
+        .prodotto-disponibile {
+            color: var(--verde-successo);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        /* Badge B2B */
+        .badge-b2b {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--rosso-vivo);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Sezione Speciali */
+        .speciali-section {
+            background: var(--crema);
+            padding: 4rem 0;
+        }
+        
+        .speciali-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .speciale-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 3px solid var(--terra);
+        }
+        
+        .speciale-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .speciale-title {
+            font-size: 1.5rem;
+            color: var(--terra);
+            margin-bottom: 1rem;
+        }
+        
+        .speciale-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .speciale-cta {
+            background: var(--terra);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .speciale-cta:hover {
+            background: var(--nero-forno);
+            transform: translateY(-2px);
+        }
+        
+        /* Personalizzazioni */
+        .personalizzazioni {
+            background: linear-gradient(135deg, var(--nero-forno), #4a3426);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .personal-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .personal-text h3 {
+            font-size: 2rem;
+            color: var(--grano);
+            margin-bottom: 1rem;
+        }
+        
+        .personal-text p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .personal-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .personal-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .personal-list li::before {
+            content: "✓";
+            color: var(--grano);
+            font-weight: bold;
+        }
+        
+        .personal-visual {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .personal-examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .example-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .example-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .example-text {
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta-prodotti {
+            padding: 4rem 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .cta-prodotti h2 {
+            font-size: 2.5rem;
+            color: var(--nero-forno);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-prodotti p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--rosso-vivo);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: #b53a2f;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--terra);
+            padding: 1rem 2rem;
+            border: 2px solid var(--terra);
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--terra);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--nero-forno);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--grano);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-prodotti h1 {
+                font-size: 2rem;
+            }
+            
+            .personal-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .filtri-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">🍞 I 3 Fratelli</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ristoranti.html">Per Ristoranti</a></li>
+                <li><a href="#" style="color: var(--terra);">Prodotti</a></li>
+                <li><a href="servizio24.html">Servizio H24</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+            <a href="ristoranti.html#form-partner" class="cta-header">DIVENTA PARTNER</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-prodotti">
+        <div class="container">
+            <h1>Ogni Forma ha un'Anima</h1>
+            <p>Dal lievito madre del 1960, nascono pani per ogni momento e ogni tavola</p>
+        </div>
+    </section>
+
+    <!-- Filtri -->
+    <section class="filtri-section">
+        <div class="container">
+            <div class="filtri-container">
+                <button class="filtro-btn active">Tutti i Prodotti</button>
+                <button class="filtro-btn">Per Ristoranti</button>
+                <button class="filtro-btn">Per Hotel/Bar</button>
+                <button class="filtro-btn">Tradizionali</button>
+                <button class="filtro-btn">Speciali</button>
+                <button class="filtro-btn">Notturni H24</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prodotti -->
+    <section class="prodotti-section">
+        <div class="container">
+            
+            <!-- Linea Ristorazione -->
+            <div class="categoria">
+                <div class="categoria-header">
+                    <h2 class="categoria-title">🍽️ Linea Ristorazione</h2>
+                    <p class="categoria-desc">Pensati per accompagnare ogni portata del tuo menu</p>
+                </div>
+                
+                <div class="prodotti-grid">
+                    <div class="prodotto-card">
+                        <div class="badge-b2b">TOP B2B</div>
+                        <div class="prodotto-img">🥖</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Filone Rustico</h3>
+                            <p class="prodotto-desc">
+                                Crosta croccante, mollica alveolata. Perfetto per antipasti e taglieri.
+                                Lievitazione 24h.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">500g / 1kg</span>
+                                <span class="prodotto-disponibile">H24 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prodotto-card">
+                        <div class="badge-b2b">ESCLUSIVO</div>
+                        <div class="prodotto-img">🍞</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Pane alle Olive</h3>
+                            <p class="prodotto-desc">
+                                Con olive taggiasche. Ideale per piatti di pesce e aperitivi.
+                                Ricetta esclusiva dal 1975.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">400g</span>
+                                <span class="prodotto-disponibile">H24 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prodotto-card">
+                        <div class="prodotto-img">🥐</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Michetta Milanese</h3>
+                            <p class="prodotto-desc">
+                                La vera michetta soffiata. Croccante fuori, vuota dentro.
+                                Perfetta per panini gourmet.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">50g cad</span>
+                                <span class="prodotto-disponibile">H24 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prodotto-card">
+                        <div class="badge-b2b">PERSONALIZZABILE</div>
+                        <div class="prodotto-img">🍔</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Burger Bun Premium</h3>
+                            <p class="prodotto-desc">
+                                Soffice, con semi di sesamo. Mantiene struttura anche con burger succosi.
+                                Logo imprimibile.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">80g / 120g</span>
+                                <span class="prodotto-disponibile">Su ordine</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Linea Hotel/Bar -->
+            <div class="categoria">
+                <div class="categoria-header">
+                    <h2 class="categoria-title">☕ Linea Hotel & Bar</h2>
+                    <p class="categoria-desc">Dalla colazione all'aperitivo, sempre freschi</p>
+                </div>
+                
+                <div class="prodotti-grid">
+                    <div class="prodotto-card">
+                        <div class="prodotto-img">🥐</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Croissant Sfogliato</h3>
+                            <p class="prodotto-desc">
+                                Burro francese, 72 strati. Vuoto o farcito.
+                                Consegna alle 5:00 per colazioni perfette.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">70g</span>
+                                <span class="prodotto-disponibile">5:00 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prodotto-card">
+                        <div class="prodotto-img">🍩</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Brioche col Tuppo</h3>
+                            <p class="prodotto-desc">
+                                Soffice e profumata. Perfetta per cappuccino.
+                                Anche versione vegana disponibile.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">80g</span>
+                                <span class="prodotto-disponibile">5:00 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prodotto-card">
+                        <div class="badge-b2b">APERITIVO</div>
+                        <div class="prodotto-img">🥨</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Grissini Artigianali</h3>
+                            <p class="prodotto-desc">
+                                Stirati a mano. Classici, al rosmarino, al sesamo.
+                                Confezionati singolarmente su richiesta.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">Sacchetti 200g</span>
+                                <span class="prodotto-disponibile">H24 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prodotto-card">
+                        <div class="prodotto-img">🍕</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Focaccia Genovese</h3>
+                            <p class="prodotto-desc">
+                                Alta, soffice, con olio EVO ligure.
+                                Perfetta per aperitivi e lunch box.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">Teglie 40x60</span>
+                                <span class="prodotto-disponibile">H24 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Linea Tradizionale -->
+            <div class="categoria">
+                <div class="categoria-header">
+                    <h2 class="categoria-title">🏛️ I Classici della Tradizione</h2>
+                    <p class="categoria-desc">Le ricette che non cambiano dal 1960</p>
+                </div>
+                
+                <div class="prodotti-grid">
+                    <div class="prodotto-card">
+                        <div class="prodotto-img">🥖</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Pane di Como</h3>
+                            <p class="prodotto-desc">
+                                Ricetta della nonna. Farina tipo 2, lievito madre centenario.
+                                Il pane della memoria.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">1kg / 2kg</span>
+                                <span class="prodotto-disponibile">H24 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prodotto-card">
+                        <div class="prodotto-img">🍞</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Pugliese</h3>
+                            <p class="prodotto-desc">
+                                Semola di grano duro, crosta dorata.
+                                Si mantiene morbido per 3 giorni.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">500g / 1kg</span>
+                                <span class="prodotto-disponibile">H24 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prodotto-card">
+                        <div class="prodotto-img">🥨</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Ciabatta</h3>
+                            <p class="prodotto-desc">
+                                Alta idratazione, alveolatura perfetta.
+                                Ideale per panini e bruschette.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">250g</span>
+                                <span class="prodotto-disponibile">H24 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prodotto-card">
+                        <div class="prodotto-img">🌾</div>
+                        <div class="prodotto-body">
+                            <h3 class="prodotto-name">Integrale 100%</h3>
+                            <p class="prodotto-desc">
+                                Farina macinata a pietra. Ricco di fibre.
+                                Per chi cerca salute e gusto.
+                            </p>
+                            <div class="prodotto-info">
+                                <span class="prodotto-tag">500g</span>
+                                <span class="prodotto-disponibile">H24 ✓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prodotti Speciali -->
+    <section class="speciali-section">
+        <div class="container">
+            <h2 class="section-title">Creazioni Speciali & Stagionali</h2>
+            <p class="section-subtitle">Innovazione che rispetta la tradizione</p>
+            
+            <div class="speciali-grid">
+                <div class="speciale-card">
+                    <div class="speciale-icon">🌙</div>
+                    <h3 class="speciale-title">Linea Notturna H24</h3>
+                    <p class="speciale-desc">
+                        Pani speciali sempre disponibili per emergenze notturne.
+                        Il salvavita dei ristoranti aperti fino a tardi.
+                    </p>
+                    <a href="#" class="speciale-cta">Scopri la Linea</a>
+                </div>
+                
+                <div class="speciale-card">
+                    <div class="speciale-icon">🎄</div>
+                    <h3 class="speciale-title">Panettoni & Colombe</h3>
+                    <p class="speciale-desc">
+                        Lievitati delle feste con 72 ore di lavorazione.
+                        Personalizzabili con logo aziendale.
+                    </p>
+                    <a href="#" class="speciale-cta">Prenota Ora</a>
+                </div>
+                
+                <div class="speciale-card">
+                    <div class="speciale-icon">🌱</div>
+                    <h3 class="speciale-title">Linea Senza</h3>
+                    <p class="speciale-desc">
+                        Senza glutine, senza lattosio, vegani.
+                        Perché tutti hanno diritto al pane buono.
+                    </p>
+                    <a href="#" class="speciale-cta">Vedi Opzioni</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personalizzazioni -->
+    <section class="personalizzazioni">
+        <div class="container">
+            <h2 class="section-title" style="color: white; text-align: center;">Pane Su Misura per il Tuo Business</h2>
+            <p class="section-subtitle" style="color: var(--grano); text-align: center;">Creiamo insieme il pane perfetto per te</p>
+            
+            <div class="personal-content">
+                <div class="personal-text">
+                    <h3>Sviluppo Ricette Esclusive</h3>
+                    <p>
+                        Non trovi il pane giusto per il tuo menu? Lo creiamo insieme.
+                        Il nostro team di R&D lavora con te per sviluppare ricette uniche
+                        che diventano la firma del tuo ristorante.
+                    </p>
+                    
+                    <ul class="personal-list">
+                        <li>Farine speciali (antichi grani, kamut, farro)</li>
+                        <li>Forme personalizzate per presentazioni uniche</li>
+                        <li>Loghi e marchi impressi sul pane</li>
+                        <li>Packaging brandizzato per delivery</li>
+                        <li>Ricette esclusive con contratto</li>
+                    </ul>
+                </div>
+                
+                <div class="personal-visual">
+                    <h3 style="color: var(--grano); margin-bottom: 1rem;">Esempi di Personalizzazioni</h3>
+                    
+                    <div class="personal-examples">
+                        <div class="example-item">
+                            <div class="example-icon">🏆</div>
+                            <div class="example-text">Pane Stellato<br>per Chef Michelin</div>
+                        </div>
+                        <div class="example-item">
+                            <div class="example-icon">💒</div>
+                            <div class="example-text">Bomboniere<br>Commestibili</div>
+                        </div>
+                        <div class="example-item">
+                            <div class="example-icon">🎯</div>
+                            <div class="example-text">Burger Bun<br>con Logo</div>
+                        </div>
+                        <div class="example-item">
+                            <div class="example-icon">🎨</div>
+                            <div class="example-text">Pane Colorato<br>Naturalmente</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Finale -->
+    <section class="cta-prodotti">
+        <div class="container">
+            <h2>Vuoi Assaggiare i Nostri Prodotti?</h2>
+            <p>Campioni gratuiti per ristoranti • Visita in negozio per privati</p>
+            
+            <div class="cta-buttons">
+                <a href="ristoranti.html#form-partner" class="btn-primary">🍞 Richiedi Campioni B2B</a>
+                <a href="servizio24.html" class="btn-secondary">🕐 Scopri il Servizio H24</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Catalogo Prodotti</h3>
+                    <ul>
+                        <li><a href="#">Linea Ristorazione</a></li>
+                        <li><a href="#">Linea Hotel/Bar</a></li>
+                        <li><a href="#">Pani Tradizionali</a></li>
+                        <li><a href="#">Prodotti Speciali</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Per Ordinare</h3>
+                    <ul>
+                        <li><a href="#">WhatsApp Business</a></li>
+                        <li><a href="#">+39 XXX XXXXXXX</a></li>
+                        <li><a href="#">ordini@i3fratelli.it</a></li>
+                        <li><a href="#">Area Clienti B2B</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Informazioni</h3>
+                    <ul>
+                        <li><a href="#">Allergeni</a></li>
+                        <li><a href="#">Valori Nutrizionali</a></li>
+                        <li><a href="#">Certificazioni</a></li>
+                        <li><a href="#">Ingredienti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Dove Siamo</h3>
+                    <ul>
+                        <li><a href="#">Via [Indirizzo]</a></li>
+                        <li><a href="#">Milano</a></li>
+                        <li><a href="#">Aperti H24</a></li>
+                        <li><a href="#">360 giorni l'anno</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 I 3 Fratelli - Il Pane che Non Dorme Mai</p>
+            </div>
+        </div>
+    </footer>
+</body>
+  </html>

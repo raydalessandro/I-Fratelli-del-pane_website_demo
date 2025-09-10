@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I 3 Fratelli - L'Unico Fornitore di Pane H24 a Milano</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
             --terra: #A9714B;
@@ -68,9 +64,7 @@
             transition: color 0.3s;
         }
         
-        .nav-links a:hover {
-            color: var(--terra);
-        }
+        .nav-links a:hover { color: var(--terra); }
         
         .cta-header {
             background: var(--rosso-vivo);
@@ -81,53 +75,30 @@
             transition: transform 0.3s;
             white-space: nowrap;
         }
-        
-        .cta-header:hover {
-            transform: translateY(-2px);
-        }
+        .cta-header:hover { transform: translateY(-2px); }
 
-        /* DROPDOWN MENU */
-        .dropdown {
-            position: relative;
-        }
+        /* ▼ Dropdown menu */
+        .dropdown { position: relative; }
         .dropdown > a {
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 6px;
         }
-        .caret {
-            font-size: 0.85em;
-            opacity: 0.8;
+        .caret { font-size: 0.85em; opacity: 0.8; }
+        .dropdown-content{
+            position:absolute; top:calc(100% + 8px); left:0;
+            background:#fff; list-style:none; margin:0; padding:8px 0;
+            box-shadow:0 2px 10px rgba(0,0,0,0.12); min-width:200px; border-radius:8px;
+            display:none; z-index:1001;
         }
-        .dropdown-content {
-            position: absolute;
-            top: calc(100% + 8px);
-            left: 0;
-            background: #fff;
-            list-style: none;
-            margin: 0;
-            padding: 8px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.12);
-            min-width: 200px;
-            border-radius: 8px;
-            display: none;
-            z-index: 1001;
+        .dropdown-content li a{
+            display:block; padding:10px 16px; color: var(--nero-forno); text-decoration:none;
         }
-        .dropdown-content li a {
-            display: block;
-            padding: 10px 16px;
-            color: var(--nero-forno);
-            text-decoration: none;
-        }
-        .dropdown-content li a:hover {
-            background: #f3f3f3;
-            color: var(--terra);
-        }
+        .dropdown-content li a:hover{ background:#f3f3f3; color: var(--terra); }
         .dropdown:hover .dropdown-content,
-        .dropdown:focus-within .dropdown-content {
-            display: block;
-        }
+        .dropdown:focus-within .dropdown-content{ display:block; }
+        /* ▲ Fine dropdown */
         
         /* Hero Section */
         .hero {
@@ -160,21 +131,9 @@
             margin: 3rem 0;
         }
         
-        .badge {
-            text-align: center;
-        }
-        
-        .badge-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--grano);
-        }
-        
-        .badge-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .badge { text-align: center; }
+        .badge-number { font-size: 2.5rem; font-weight: bold; color: var(--grano); }
+        .badge-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
         
         .hero-cta {
             display: flex;
@@ -193,11 +152,7 @@
             transition: all 0.3s;
             display: inline-block;
         }
-        
-        .btn-primary:hover {
-            background: #b53a2f;
-            transform: translateY(-3px);
-        }
+        .btn-primary:hover { background: #b53a2f; transform: translateY(-3px); }
         
         .btn-secondary {
             background: transparent;
@@ -210,17 +165,10 @@
             transition: all 0.3s;
             display: inline-block;
         }
-        
-        .btn-secondary:hover {
-            background: white;
-            color: var(--nero-forno);
-        }
+        .btn-secondary:hover { background: white; color: var(--nero-forno); }
         
         /* Valori Section */
-        .valori {
-            padding: 4rem 0;
-            background: var(--crema);
-        }
+        .valori { padding: 4rem 0; background: var(--crema); }
         
         .valori-grid {
             display: grid;
@@ -237,32 +185,13 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
-        
-        .valore-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .valore-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .valore-title {
-            font-size: 1.5rem;
-            color: var(--terra);
-            margin-bottom: 1rem;
-        }
-        
-        .valore-desc {
-            color: #666;
-            line-height: 1.8;
-        }
+        .valore-card:hover { transform: translateY(-5px); }
+        .valore-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .valore-title { font-size: 1.5rem; color: var(--terra); margin-bottom: 1rem; }
+        .valore-desc { color: #666; line-height: 1.8; }
         
         /* Clienti Section */
-        .clienti {
-            padding: 4rem 0;
-            background: white;
-        }
+        .clienti { padding: 4rem 0; background: white; }
         
         .section-title {
             text-align: center;
@@ -270,7 +199,6 @@
             color: var(--nero-forno);
             margin-bottom: 1rem;
         }
-        
         .section-subtitle {
             text-align: center;
             color: #666;
@@ -285,7 +213,6 @@
             gap: 2rem;
             margin-top: 2rem;
         }
-        
         .cliente-logo {
             width: 150px;
             height: 80px;
@@ -307,7 +234,6 @@
             margin-top: 3rem;
             position: relative;
         }
-        
         .testimonial::before {
             content: '"';
             font-size: 4rem;
@@ -316,17 +242,8 @@
             left: 30px;
             opacity: 0.3;
         }
-        
-        .testimonial-text {
-            font-size: 1.3rem;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonial-author {
-            text-align: right;
-            color: var(--grano);
-        }
+        .testimonial-text { font-size: 1.3rem; font-style: italic; margin-bottom: 1rem; }
+        .testimonial-author { text-align: right; color: var(--grano); }
         
         /* Servizio H24 */
         .servizio24 {
@@ -334,14 +251,12 @@
             background: linear-gradient(135deg, var(--nero-forno) 0%, #4a3426 100%);
             color: white;
         }
-        
         .timeline {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-        
         .timeline-item {
             text-align: center;
             padding: 1.5rem;
@@ -349,74 +264,32 @@
             border-radius: 10px;
             backdrop-filter: blur(10px);
         }
-        
         .timeline-time {
             font-size: 1.5rem;
             color: var(--grano);
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
-        
-        .timeline-desc {
-            font-size: 0.9rem;
-        }
+        .timeline-desc { font-size: 0.9rem; }
         
         /* CTA Finale */
-        .cta-finale {
-            padding: 4rem 0;
-            background: var(--crema);
-            text-align: center;
-        }
-        
-        .cta-finale h2 {
-            font-size: 2.5rem;
-            color: var(--nero-forno);
-            margin-bottom: 1rem;
-        }
-        
-        .cta-finale p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
+        .cta-finale { padding: 4rem 0; background: var(--crema); text-align: center; }
+        .cta-finale h2 { font-size: 2.5rem; color: var(--nero-forno); margin-bottom: 1rem; }
+        .cta-finale p { font-size: 1.2rem; color: #666; margin-bottom: 2rem; }
         
         /* Footer */
-        footer {
-            background: var(--nero-forno);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
+        footer { background: var(--nero-forno); color: white; padding: 3rem 0 1rem; }
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
-        
-        .footer-section h3 {
-            color: var(--grano);
-            margin-bottom: 1rem;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-section a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-section a:hover {
-            color: var(--grano);
-        }
-        
+        .footer-section h3 { color: var(--grano); margin-bottom: 1rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.5rem; }
+        .footer-section a { color: white; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--grano); }
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -440,45 +313,19 @@
             z-index: 1000;
             animation: pulse 2s infinite;
         }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
+        @keyframes pulse { 0% { transform: scale(1);} 50% { transform: scale(1.05);} 100% { transform: scale(1);} }
         .live-dot {
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
+            width: 10px; height: 10px; background: white; border-radius: 50%;
             animation: blink 1s infinite;
         }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
+        @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-badges {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-links {
-                display: none; /* il menu originale resta nascosto su mobile */
-            }
-            
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
+            .hero h1 { font-size: 2rem; }
+            .hero-badges { flex-direction: column; gap: 1rem; }
+            .nav-links { display: none; } /* nasconde i link su mobile (resta il CTA) */
+            .hero-cta { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -696,4 +543,4 @@
         <span>STIAMO SFORNANDO ORA</span>
     </div>
 </body>
-    </html>
+                    </html>

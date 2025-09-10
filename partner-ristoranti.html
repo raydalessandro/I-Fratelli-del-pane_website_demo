@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Ristoranti - I 3 Fratelli Panificio H24 Milano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --terra: #A9714B;
+            --crema: #F5EBDD;
+            --grano: #D9B36F;
+            --nero-forno: #2D1C13;
+            --rosso-vivo: #9F3325;
+            --bianco: #FFFFFF;
+            --verde-successo: #4CAF50;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--nero-forno);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header (stesso della home) */
+        header {
+            background: var(--bianco);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--terra);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--nero-forno);
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--terra);
+        }
+        
+        .cta-header {
+            background: var(--rosso-vivo);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+        }
+        
+        /* Hero B2B */
+        .hero-b2b {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--nero-forno) 0%, #4a3426 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .hero-b2b h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-b2b .subtitle {
+            font-size: 1.3rem;
+            color: var(--grano);
+            margin-bottom: 2rem;
+        }
+        
+        .partner-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .stat-icon {
+            font-size: 2rem;
+        }
+        
+        .stat-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Vantaggi Section */
+        .vantaggi {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--nero-forno);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        
+        .vantaggi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .vantaggio-item {
+            padding: 2rem;
+            border-left: 4px solid var(--terra);
+            background: var(--crema);
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .vantaggio-title {
+            font-size: 1.3rem;
+            color: var(--terra);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .vantaggio-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .vantaggio-detail {
+            font-size: 0.9rem;
+            color: var(--verde-successo);
+            font-weight: bold;
+        }
+        
+        /* Case Studies */
+        .case-studies {
+            padding: 4rem 0;
+            background: var(--crema);
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .case-header {
+            background: var(--terra);
+            color: white;
+            padding: 1.5rem;
+        }
+        
+        .case-type {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .case-title {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .case-body {
+            padding: 1.5rem;
+        }
+        
+        .case-problem {
+            color: var(--rosso-vivo);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-solution {
+            color: var(--verde-successo);
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-result {
+            background: var(--crema);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: bold;
+            color: var(--terra);
+        }
+        
+        /* Processo Partnership */
+        .processo {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .processo-timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .processo-timeline::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--grano);
+            z-index: 0;
+        }
+        
+        .processo-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--terra);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            color: var(--nero-forno);
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Servizi Speciali */
+        .servizi-speciali {
+            padding: 4rem 0;
+            background: linear-gradient(to right, var(--terra), #c4865b);
+            color: white;
+        }
+        
+        .servizi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .servizio-special {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .servizio-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .servizio-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .servizio-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Form Partnership */
+        .form-section {
+            padding: 4rem 0;
+            background: var(--crema);
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: var(--nero-forno);
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--terra);
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-submit {
+            background: var(--rosso-vivo);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .form-submit:hover {
+            background: #b53a2f;
+            transform: translateY(-2px);
+        }
+        
+        /* Garanzie */
+        .garanzie {
+            padding: 3rem 0;
+            background: white;
+        }
+        
+        .garanzie-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .garanzia-item {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .garanzia-icon {
+            font-size: 3rem;
+            color: var(--verde-successo);
+            margin-bottom: 1rem;
+        }
+        
+        .garanzia-text {
+            font-weight: bold;
+            color: var(--nero-forno);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--nero-forno);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--grano);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-b2b h1 {
+                font-size: 2rem;
+            }
+            
+            .partner-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .processo-timeline {
+                flex-direction: column;
+            }
+            
+            .processo-timeline::before {
+                display: none;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">🍞 I 3 Fratelli</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" style="color: var(--terra);">Per Ristoranti</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="servizio24.html">Servizio H24</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+            <a href="#form-partner" class="cta-header">DIVENTA PARTNER</a>
+        </nav>
+    </header>
+
+    <!-- Hero B2B -->
+    <section class="hero-b2b">
+        <div class="container">
+            <h1>Il Partner Silenzioso del Tuo Successo</h1>
+            <p class="subtitle">Mentre tu servi i tuoi clienti, noi garantiamo il tuo pane. Sempre.</p>
+            
+            <div class="partner-stats">
+                <div class="stat">
+                    <span class="stat-icon">✅</span>
+                    <span class="stat-text">100% puntualità consegne</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-icon">⚡</span>
+                    <span class="stat-text">30 min per emergenze</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-icon">📅</span>
+                    <span class="stat-text">Fatturazione mensile</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vantaggi -->
+    <section class="vantaggi">
+        <div class="container">
+            <h2 class="section-title">I Vantaggi di Averci Come Partner</h2>
+            <p class="section-subtitle">Non solo fornitori, ma parte del tuo team</p>
+            
+            <div class="vantaggi-grid">
+                <div class="vantaggio-item">
+                    <h3 class="vantaggio-title">
+                        <span>🚚</span> Consegne Puntuali Garantite
+                    </h3>
+                    <p class="vantaggio-desc">
+                        Due consegne giornaliere programmate (mattina e pomeriggio).
+                        Orari personalizzabili secondo le tue esigenze.
+                    </p>
+                    <p class="vantaggio-detail">✓ SMS di conferma consegna</p>
+                </div>
+                
+                <div class="vantaggio-item">
+                    <h3 class="vantaggio-title">
+                        <span>📞</span> Ordini Last-Minute
+                    </h3>
+                    <p class="vantaggio-desc">
+                        Accettiamo ordini fino alle 22:00 per il giorno dopo.
+                        Servizio emergenza H24 per situazioni critiche.
+                    </p>
+                    <p class="vantaggio-detail">✓ WhatsApp dedicato B2B</p>
+                </div>
+                
+                <div class="vantaggio-item">
+                    <h3 class="vantaggio-title">
+                        <span>💳</span> Fatturazione Semplificata
+                    </h3>
+                    <p class="vantaggio-desc">
+                        Fattura unica mensile, pagamento a 30/60 giorni.
+                        Fatturazione elettronica automatica.
+                    </p>
+                    <p class="vantaggio-detail">✓ Nessun minimo d'ordine</p>
+                </div>
+                
+                <div class="vantaggio-item">
+                    <h3 class="vantaggio-title">
+                        <span>🎯</span> Prodotti Personalizzabili
+                    </h3>
+                    <p class="vantaggio-desc">
+                        Pani su misura per il tuo menu.
+                        Possibilità di loghi impressi per eventi.
+                    </p>
+                    <p class="vantaggio-detail">✓ R&D dedicata gratuita</p>
+                </div>
+                
+                <div class="vantaggio-item">
+                    <h3 class="vantaggio-title">
+                        <span>👤</span> Account Manager Dedicato
+                    </h3>
+                    <p class="vantaggio-desc">
+                        Un referente unico per tutte le tue esigenze.
+                        Visite periodiche per ottimizzare il servizio.
+                    </p>
+                    <p class="vantaggio-detail">✓ Numero diretto sempre attivo</p>
+                </div>
+                
+                <div class="vantaggio-item">
+                    <h3 class="vantaggio-title">
+                        <span>🏆</span> Qualità Certificata
+                    </h3>
+                    <p class="vantaggio-desc">
+                        HACCP, tracciabilità completa ingredienti.
+                        Lievito madre dal 1960, ricette tradizionali.
+                    </p>
+                    <p class="vantaggio-detail">✓ Campioni gratuiti sempre</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies">
+        <div class="container">
+            <h2 class="section-title">Storie di Partnership di Successo</h2>
+            <p class="section-subtitle">Come risolviamo i problemi reali dei nostri clienti</p>
+            
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="case-header">
+                        <p class="case-type">Ristorante Stellato</p>
+                        <h3 class="case-title">Il Sabato Sera Salvato</h3>
+                    </div>
+                    <div class="case-body">
+                        <p class="case-problem">PROBLEMA:</p>
+                        <p>Sabato sera, ore 22:30. 80 coperti, pane finito, fornitori chiusi.</p>
+                        
+                        <p class="case-solution">SOLUZIONE:</p>
+                        <p>Chiamata al nostro H24, consegna in 20 minuti di pane fresco appena sfornato.</p>
+                        
+                        <div class="case-result">
+                            "Da quel giorno, siamo clienti fissi"
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-header">
+                        <p class="case-type">Hotel 5 Stelle</p>
+                        <h3 class="case-title">La Colazione Perfetta</h3>
+                    </div>
+                    <div class="case-body">
+                        <p class="case-problem">PROBLEMA:</p>
+                        <p>Necessità di prodotti freschi alle 5:30 ogni mattina, 365 giorni l'anno.</p>
+                        
+                        <p class="case-solution">SOLUZIONE:</p>
+                        <p>Consegna garantita alle 5:00, inclusi festivi. Mai un ritardo in 3 anni.</p>
+                        
+                        <div class="case-result">
+                            "L'affidabilità che cercavamo"
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-header">
+                        <p class="case-type">Pizzeria Gourmet</p>
+                        <h3 class="case-title">Il Pane Su Misura</h3>
+                    </div>
+                    <div class="case-body">
+                        <p class="case-problem">PROBLEMA:</p>
+                        <p>Serviva un pane specifico per accompagnare pizze gourmet, nessuno lo faceva.</p>
+                        
+                        <p class="case-solution">SOLUZIONE:</p>
+                        <p>Sviluppato insieme ricetta esclusiva, farina speciale, forma unica.</p>
+                        
+                        <div class="case-result">
+                            "Il nostro pane signature"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo Partnership -->
+    <section class="processo">
+        <div class="container">
+            <h2 class="section-title">Diventa Partner in 4 Semplici Step</h2>
+            <p class="section-subtitle">Dal primo contatto alla prima consegna in 48 ore</p>
+            
+            <div class="processo-timeline">
+                <div class="processo-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Contatto</h3>
+                    <p class="step-desc">Chiamaci o compila il form. Risposta in 1 ora.</p>
+                </div>
+                
+                <div class="processo-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Incontro</h3>
+                    <p class="step-desc">Veniamo da te con campioni gratuiti da assaggiare.</p>
+                </div>
+                
+                <div class="processo-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Proposta</h3>
+                    <p class="step-desc">Listino personalizzato e condizioni su misura.</p>
+                </div>
+                
+                <div class="processo-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Prima Consegna</h3>
+                    <p class="step-desc">Iniziamo subito. Nessun contratto vincolante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servizi Speciali -->
+    <section class="servizi-speciali">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Servizi Esclusivi per Partner</h2>
+            <p class="section-subtitle" style="color: var(--grano);">Oltre al pane, un supporto completo</p>
+            
+            <div class="servizi-grid">
+                <div class="servizio-special">
+                    <div class="servizio-icon">🎓</div>
+                    <h3 class="servizio-title">Formazione Staff</h3>
+                    <p class="servizio-desc">
+                        Insegniamo al tuo team come conservare e valorizzare il pane
+                    </p>
+                </div>
+                
+                <div class="servizio-special">
+                    <div class="servizio-icon">🎨</div>
+                    <h3 class="servizio-title">Menu Consulting</h3>
+                    <p class="servizio-desc">
+                        Ti aiutiamo a scegliere il pane giusto per ogni piatto
+                    </p>
+                </div>
+                
+                <div class="servizio-special">
+                    <div class="servizio-icon">🎪</div>
+                    <h3 class="servizio-title">Eventi Speciali</h3>
+                    <p class="servizio-desc">
+                        Supporto dedicato per matrimoni, eventi, catering
+                    </p>
+                </div>
+                
+                <div class="servizio-special">
+                    <div class="servizio-icon">📊</div>
+                    <h3 class="servizio-title">Report Mensili</h3>
+                    <p class="servizio-desc">
+                        Analisi consumi e suggerimenti per ottimizzare gli ordini
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Partnership -->
+    <section class="form-section" id="form-partner">
+        <div class="container">
+            <h2 class="section-title">Richiedi la Tua Partnership</h2>
+            <p class="section-subtitle">Compila il form e ti contatteremo entro 1 ora</p>
+            
+            <div class="form-container">
+                <form>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nome">Nome e Cognome*</label>
+                            <input type="text" id="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ristorante">Nome Ristorante*</label>
+                            <input type="text" id="ristorante" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefono">Telefono*</label>
+                            <input type="tel" id="telefono" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tipo">Tipo Attività*</label>
+                            <select id="tipo" required>
+                                <option value="">Seleziona...</option>
+                                <option value="ristorante">Ristorante</option>
+                                <option value="pizzeria">Pizzeria</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="bar">Bar/Caffetteria</option>
+                                <option value="catering">Catering</option>
+                                <option value="altro">Altro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="coperti">Coperti Medi/Giorno</label>
+                            <input type="number" id="coperti">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="esigenze">Esigenze Specifiche</label>
+                            <textarea id="esigenze" rows="4" placeholder="Orari di consegna preferiti, tipi di pane interessanti, quantità indicative..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="quando">Quando Vorresti Iniziare?</label>
+                            <select id="quando">
+                                <option value="subito">Subito</option>
+                                <option value="settimana">Questa settimana</option>
+                                <option value="mese">Questo mese</option>
+                                <option value="info">Solo informazioni</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">🤝 Invia Richiesta Partnership</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garanzie -->
+    <section class="garanzie">
+        <div class="container">
+            <h2 class="section-title">Le Nostre Garanzie</h2>
+            
+            <div class="garanzie-list">
+                <div class="garanzia-item">
+                    <div class="garanzia-icon">✅</div>
+                    <p class="garanzia-text">Nessun Contratto<br>Vincolante</p>
+                </div>
+                
+                <div class="garanzia-item">
+                    <div class="garanzia-icon">✅</div>
+                    <p class="garanzia-text">Prima Settimana<br>di Prova Gratuita</p>
+                </div>
+                
+                <div class="garanzia-item">
+                    <div class="garanzia-icon">✅</div>
+                    <p class="garanzia-text">Cambio Ordine<br>Fino alle 22:00</p>
+                </div>
+                
+                <div class="garanzia-item">
+                    <div class="garanzia-icon">✅</div>
+                    <p class="garanzia-text">Sostituzione Immediata<br>Se Non Soddisfatti</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Area Partner</h3>
+                    <ul>
+                        <li><a href="#">Login Area Riservata</a></li>
+                        <li><a href="#">Listino B2B</a></li>
+                        <li><a href="#">Tracking Ordini</a></li>
+                        <li><a href="#">Fatture Online</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Supporto B2B</h3>
+                    <ul>
+                        <li><a href="#">WhatsApp Business</a></li>
+                        <li><a href="#">+39 XXX XXXXXXX</a></li>
+                        <li><a href="#">ordini@i3fratelli.it</a></li>
+                        <li><a href="#">Lun-Dom H24</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Certificazioni</h3>
+                    <ul>
+                        <li><a href="#">HACCP</a></li>
+                        <li><a href="#">Tracciabilità</a></li>
+                        <li><a href="#">Bio Certificato</a></li>
+                        <li><a href="#">ISO 9001</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>I 3 Fratelli</h3>
+                    <ul>
+                        <li><a href="#">La Nostra Storia</a></li>
+                        <li><a href="#">Il Team</a></li>
+                        <li><a href="#">Sostenibilità</a></li>
+                        <li><a href="#">Lavora con Noi</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 I 3 Fratelli - Uomini di Granite dal 1960</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
